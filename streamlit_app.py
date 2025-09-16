@@ -12,20 +12,17 @@ if "chroma_client" not in st.session_state or "chroma" not in st.session_state:
 st.title("📚 Minimal RAG — ChromaDB + Ollama")
 
 st.sidebar.header("⚙️ Settings")
+chunk_method_label = st.sidebar.selectbox(
+    "Chunking method",
+    ["Character (sliding window)", "Sentence-aware"],
+    index=0
+)
+chunk_method = "char" if "Character" in chunk_method_label else "sentence"
 
-col_p1, col_p2, col_p3, col_p4 = st.columns(4)
-
-with col_p1:
-    chunk_size = st.sidebar.slider("Chunk size", 300, 1000, 500)
-
-with col_p2:
-    overlap = st.sidebar.slider("Chunk overlap", 0, 200, 50)
-
-with col_p3:
-    ollama_model = st.sidebar.text_input("Ollama model", value="llama3.1:8b")
-
-with col_p4:
-    top_k = st.sidebar.slider("Top-K retrieval", 1, 10, 4)
+chunk_size = st.sidebar.slider("Chunk size", 300, 1000, 500)
+overlap = st.sidebar.slider("Chunk overlap", 0, 200, 50)
+ollama_model = st.sidebar.text_input("Ollama model", value="llama3.1:8b")
+top_k = st.sidebar.slider("Top-K retrieval", 1, 10, 4)
 
 with st.spinner("Uploading in progress…"):
     uploaded_files = st.file_uploader("Upload at least 3 .txt files", type=["txt"], accept_multiple_files=True)
@@ -37,7 +34,7 @@ if uploaded_files and st.button("📥 Build Index"):
 
     for f in uploaded_files:
         content = f.read().decode("utf-8", errors="ignore")
-        chunks = chunk_text(content, chunk_size, overlap)
+        chunks = chunk_text(content, chunk_size, overlap, method=chunk_method)
         texts.extend(chunks)
         meta.extend([{"source": f.name}] * len(chunks))
 
