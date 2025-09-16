@@ -24,6 +24,8 @@ This is a minimal Retrieval-Augmented Generation (RAG) prototype using
 ## 📦 Setup
 [Download](https://ollama.com/download) and install Ollama
  (supports macOS, Linux, Windows WSL).
+
+Python 3.9.6
 ```commandline
 ollama --version
 ollama pull llama3.1:8b
