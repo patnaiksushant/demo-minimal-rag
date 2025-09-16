@@ -35,8 +35,8 @@ Other available models:
 - gemma:2b (very small, efficient)
 
 ```bash
-git clone https://github.com/yourname/minimal-rag.git
-cd minimal-rag
+git clone https://github.com/patnaiksushant/demo-minimal-rag.git
+cd demo-minimal-rag
 pip install -r requirements.txt
 ```
 
