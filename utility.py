@@ -1,6 +1,7 @@
 from sentence_transformers import SentenceTransformer
 import chromadb
 from chromadb.config import Settings
+from typing import Optional
 
 def load_embedder(model="sentence-transformers/all-MiniLM-L6-v2"):
     return SentenceTransformer(model)
@@ -17,7 +18,7 @@ def chunk_text(text, chunk_size=500, overlap=50):
 def embed_texts(texts, embedder):
     return embedder.encode(texts, normalize_embeddings=True)
 
-def init_chromadb(persist_path: str | None = None):
+def init_chromadb(persist_path: Optional[str] = None):
     # Use PersistentClient for disk persistence, Client for in-memory
     if persist_path:
         client = chromadb.PersistentClient(path=persist_path, settings=Settings(anonymized_telemetry=False))
