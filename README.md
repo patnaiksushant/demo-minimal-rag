@@ -6,13 +6,11 @@ This is a minimal Retrieval-Augmented Generation (RAG) prototype using
 - Ollama to run open-source LLMs locally (e.g., LLaMA 3)
 - Streamlit for a simple interactive UI
 - Any LLM solution need 4 major confiurable thing
-  - In this solution we are 
-
-## 🧠 Tools / Models Used
-- ChromaDB — lightweight local vector database (embedding store & retrieval). 
-- SentenceTransformers — all-MiniLM-L6-v2 embeddings (fast, solid baseline). 
-- Ollama — local LLM runtime & API (default model: llama3.1:8b). 
-- Streamlit — web UI for uploads, settings, and Q&A.
+- In this solution we are
+  - ChromaDB: lightweight local vector database (embedding store & retrieval). 
+  - SentenceTransformers: all-MiniLM-L6-v2 embeddings (fast, solid baseline). 
+  - Ollama: local LLM runtime & API (default model: llama3.1:8b). 
+  - Streamlit: web UI for uploads, settings, and Q&A.
 
 ## 🚀 Features
 - Upload **at least 3 `.txt` files** and build an index.
